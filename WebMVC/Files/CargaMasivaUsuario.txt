@@ -1,0 +1,9 @@
+UserName|Nombre|ApellidoPaterno|ApellidoMaterno|Email|Password|Sexo|Telefono|Celular|FechaNacimiento|CURP|IdRol|IdColonia|Calle|NumeroInterior|NumeroExterior
+user3|Bob|Johnson||user3@example.com|password3|M|4444444444||1975-12-10|1988-03-25|1|30|Elm St|77|303
+user4|Alice|Brown|Smith|user4@example.com|password4|F|7778889999|5556667777|1995-08-25|EFGH123456IJKL7890|2|15|Pine St|55|101
+user5|Michael|Lee||user5@example.com|password5|M|9999999999|5484521305|1982-06-03|UVWX123456YZAB5678|1|10|Maple St|10|22
+user6|Emily|Rodriguez|Gonzalez|user6@example.com|password6|F|1239876543|9876541230|1993-02-18|LMNO678901PQRS2345|2|25|Birch St|50|7
+user7|Daniel|Garcia||user7@example.com|password7|M|3331112222|9874563200|1978-11-05|GHIJ345678KLMN6789|1|20|Cedar St|15|405
+user8|Olivia|Hernandez||user8@example.com|password8|F|5557771234|9635484120|1997-09-30|UVWX123456YZAB5678|2|7|Cherry St|88|29
+user9|Liam|Martinez||user9@example.com|password9|M|4446663333|9654785201|1999-07-07|PQRS123456TUVW5678|1|36|Rose St|95|55
+user10|Sophia|Gonzalez||user10@example.com|password10|F|5554448888|1112013658|1987-04-14|XYZA123456BCDE5678|2|17|Willow St|19|13

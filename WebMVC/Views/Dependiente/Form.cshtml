@@ -1,0 +1,130 @@
+﻿@model ML.Dependiente
+
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Formulario de Dependiente</h1>
+<hr />
+
+
+@using (Html.BeginForm("Form", "Dependiente", FormMethod.Post, new { enctype = "multipart/form-data", @class = "container" }))
+{
+
+    @Html.HiddenFor(model => model.IdDependiente)
+
+
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-6">
+            <div class="text-center mt-4">
+                <label for="">
+                    <i class="fa-solid fa-circle-user fa-xl" style="color: #000000;"></i>Nombre del Dependiente
+                </label>
+                <div class="d-flex justify-content-center mb-2">
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                </div>
+
+                <label for="">
+                    <i class="fas fa-user"></i> Apellido Paterno
+                </label>
+                <div class="d-flex justify-content-center mb-2">
+                    @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control" })
+                </div>
+
+                <label for="">
+                    <i class="fas fa-user"></i> Apellido Materno
+                </label>
+                <div class="d-flex justify-content-center mb-2">
+                    @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control" })
+                </div>
+
+                <i class="fas fa-calendar-alt"></i>
+                @Html.LabelFor(model => model.FechaNacimiento)
+                <div class="d-flex justify-content-center">
+                    @Html.TextBoxFor(model => model.FechaNacimiento, new { @class = "form-control" })
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="text-center mt-4">
+                <label for="">
+                    <i class="fa-solid fa-square-envelope fa-xl" style="color: #000000;"></i> Estado Civil
+                </label>
+                <div class="d-flex justify-content-center mb-2">
+                    @Html.TextBoxFor(model => model.EstadoCivil, new { @class = "form-control" })
+                </div>
+
+                <label for="">
+                    <i class="fa-solid fa-venus-double fa-xl" style="color: #000000;"></i> Género
+                </label>
+                <div class="d-flex justify-content-center mb-2">
+                    @Html.TextBoxFor(model => model.Genero, new { @class = "form-control" })
+                </div>
+
+                <label for="Telefono">
+                    <i class="fa-solid fa-phone fa-xl" style="color: #000000;"></i> Teléfono
+                </label>
+                <div class="d-flex justify-content-center mb-2">
+                    @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control" })
+                </div>
+
+                <label for="">
+                    <i class="fa-solid fa-id-card fa-xl" style="color: #000000;"></i> RFC
+                </label>
+                <div class="d-flex justify-content-center mb-2">
+                    @Html.TextBoxFor(model => model.RFC, new { @class = "form-control" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-6 text-center">
+            <button type="submit" class="btn btn-success" id="botonGuardar">
+                <span><i class="fa-solid fa-floppy-disk fa-xl" style="color: #000000;" id="iconoGuardar"></i></span>
+                Guardar
+            </button>
+            <a href="@Url.Action("GetAll", "Empleado")" class="btn btn-secondary" id="btnRegresar">
+                <span><i class="fa-solid fa-rotate-left fa-xl" style="color: #000000;" id="iconoRegresar"></i></span>
+                Regresar
+            </a>
+        </div>
+    </div>
+
+}
+
+
+@Scripts.Render("~/bundles/jquery")
+
+<script>
+    $('#botonGuardar').hover(
+        function () {
+            $("#botonGuardar").removeClass('btn-success');
+            $("#botonGuardar").css('background-color', '#11ff06');
+            $('#iconoGuardar').addClass('fa-shake');
+        },
+        function () {
+            $('#iconoGuardar').removeClass('fa-shake');
+            $("#botonGuardar").css('background-color', '');
+            $("#botonGuardar").addClass('btn-success');
+        }
+    );
+
+    $("#btnRegresar").hover(
+        function () {
+            $("#btnRegresar").removeClass('btn-secondary')
+            $("#btnRegresar").addClass('btn-danger')
+            $('#iconoRegresar').addClass('fa-spin fa-spin-reverse')
+        },
+        function () {
+            $("#btnRegresar").removeClass('btn-danger')
+            $("#btnRegresar").addClass('btn-secondary')
+            $('#iconoRegresar').removeClass('fa-spin fa-spin-reverse')
+        }
+    );
+</script>

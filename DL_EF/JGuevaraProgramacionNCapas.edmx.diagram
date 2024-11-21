@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a64f8e057fe54a7da552b4e79366e145" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="ProgramacionNCapasModel.Rol" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProgramacionNCapasModel.Usuario" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="ProgramacionNCapasModel.FK__Usuario__id_Rol__286302EC" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProgramacionNCapasModel.Colonia" Width="1.5" PointX="12.125" PointY="1.125" />
+        <EntityTypeShape EntityType="ProgramacionNCapasModel.Direccion" Width="1.5" PointX="14.375" PointY="1.625" />
+        <EntityTypeShape EntityType="ProgramacionNCapasModel.Estado" Width="1.5" PointX="7.625" PointY="1.25" />
+        <EntityTypeShape EntityType="ProgramacionNCapasModel.Municipio" Width="1.5" PointX="9.875" PointY="1.25" />
+        <EntityTypeShape EntityType="ProgramacionNCapasModel.Pai" Width="1.5" PointX="5.375" PointY="1.375" />
+        <AssociationConnector Association="ProgramacionNCapasModel.FK__Colonia__IdMunic__52593CB8" />
+        <AssociationConnector Association="ProgramacionNCapasModel.FK__Direccion__IdCol__5629CD9C" />
+        <AssociationConnector Association="ProgramacionNCapasModel.FK__Direccion__IdUsu__5DCAEF64" />
+        <AssociationConnector Association="ProgramacionNCapasModel.FK__Estado__IdPais__4CA06362" />
+        <AssociationConnector Association="ProgramacionNCapasModel.FK__Municipio__IdEst__4F7CD00D" />
+        <EntityTypeShape EntityType="ProgramacionNCapasModel.Aseguradora" Width="1.5" PointX="5.25" PointY="4" />
+        <AssociationConnector Association="ProgramacionNCapasModel.FK__Asegurado__IdUsu__6FE99F9F" />
+        <EntityTypeShape EntityType="ProgramacionNCapasModel.Empleado" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="ProgramacionNCapasModel.Empresa" Width="1.5" PointX="0.75" PointY="8.875" />
+        <AssociationConnector Association="ProgramacionNCapasModel.FK__Empleado__IdEmpr__19DFD96B" />
+        <EntityTypeShape EntityType="ProgramacionNCapasModel.Dependiente" Width="1.5" PointX="5.25" PointY="8.25" />
+        <AssociationConnector Association="ProgramacionNCapasModel.FK__Dependien__Numer__3F115E1A" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,77 @@
+﻿@model ML.Aseguradora
+
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+@Scripts.Render("~/bundles/jquery")
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+<h2 class="text-center">Aseguradoras</h2>
+<hr />
+
+<div class="table-responsive mb-4">
+    <table class="table table-striped-columns" id="aseguradoraTabla">
+        <thead class="text-center">
+            <tr class="align-middle">
+                <th class="col">Nombre Aseguradora</th>
+                <th class="col">Fecha Creación</th>
+                <th class="col">Nombre Usuario</th>
+                <th class="col">Imagen Usuario</th>
+                <th class="col">Editar</th>
+                <th class="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @foreach (ML.Aseguradora aseguradora in Model.Aseguradoras)
+            {
+
+                <tr class="align-middle">
+                    <td>@aseguradora.Nombre</td>
+                    <td>@aseguradora.FechaCreacion</td>
+                    <td>@aseguradora.Usuario.Nombre</td>
+                    @if (aseguradora.Usuario.Imagen != null || aseguradora.Usuario.Imagen == "")
+                    {
+                        <td>
+                            <img id="img" src="data:image/*;base64,@aseguradora.Usuario.Imagen" width="40" height="40" />
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <img id="img" src="https://png.pngtree.com/png-vector/20220608/ourlarge/pngtree-faceless-user-anonymous-unknown-icon-png-image_4816463.png" width="40" height="40" />
+                        </td>
+                    }
+
+                    <td><a class="btn btn-outline-secondary m-1" href="@Url.Action("Form", "Aseguradora", new {idUsuario = aseguradora.Usuario.IdUsuario})"><i class="fa-solid fa-pen-to-square fa-flip-horizontal fa-lg" style="color: #007bff;"></i></a></td>
+
+                    <td>
+                        <a class="btn btn-outline-secondary m-1" href="@Url.Action("Delete", "Aseguradora", new {idAseguradora=aseguradora.IdAseguradora})"
+                           onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">
+                            <i class="fa-sharp fa-solid fa-trash fa-lg" style="color: #dc3545;"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-center">
+    <a href="@Url.Action("Form", "Aseguradora")" class="btn btn-success text-center">Agregar Aseguradora</a>
+</div>
+
+
+<script type="text/javascript">
+    let table = new DataTable('#aseguradoraTabla', {
+        reponsive: true,
+        "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "Todos"]],
+        searching: false,
+        language: {
+            url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json",
+        },
+    });
+
+</script>

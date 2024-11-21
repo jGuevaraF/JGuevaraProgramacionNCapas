@@ -1,0 +1,102 @@
+﻿@model ML.Dependiente
+
+@{
+    ViewBag.Title = "GetByNumeroEmpleado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h1>Dependientes</h1>
+    <hr />
+    <p class="fs-4"><strong>@Model.Empleado.Nombre <u>@Model.Empleado.ApellidoPaterno @Model.Empleado.ApellidoMaterno</u></strong> </p>
+
+    @if (Model.Empleado.Foto != null || Model.Empleado.Foto == "")
+    {
+        <div class="img-thumbnail text-center m-3">
+            <img id="img" src="data:image/*;base64,@Model.Empleado.Foto" style="display: inline-block; width:15%;" />
+        </div>
+    }
+    else
+    {
+        <img id="img" src="https://png.pngtree.com/png-vector/20220608/ourlarge/pngtree-faceless-user-anonymous-unknown-icon-png-image_4816463.png" width="40" height="40" style="display: inline-block;" />
+    }
+    <br />
+   
+
+    @if (Model.Dependientes != null)
+    {
+        <div style="overflow-x:auto;">
+            <table class="table table-striped-columns" id="dependientesTabla">
+                <thead class="text-center">
+                    <tr class="align-middle">
+                        <th class="col text-center">Editar</th>
+                        <th class="col text-center">Nombre Dependiente</th>
+                        <th class="col text-center">Fecha Nacimiento Dependiente</th>
+                        <th class="col text-center">Estado Civil</th>
+                        <th class="col text-center">Género</th>
+                        <th class="col text-center">Teléfono</th>
+                        <th class="col text-center">RFC</th>
+                        <th class="col text-center">Eliminar</th>
+                    </tr>
+                </thead>
+
+                <tbody class="text-center">
+                    @foreach (ML.Dependiente dependiente in Model.Dependientes)
+                    {
+
+                        <tr class="align-middle">
+                            <td>
+                                <a class="btn btn-outline-secondary m-1" href="@Url.Action("Form", "Dependiente", new {idDependiente = dependiente.IdDependiente})"><i class="fa-solid fa-pen-to-square fa-flip-horizontal fa-lg" style="color: #007bff;"></i></a>
+                            </td>
+
+                            <td>@dependiente.Nombre @dependiente.ApellidoPaterno</td>
+                            <td>@dependiente.FechaNacimiento</td>
+                            <td>@dependiente.EstadoCivil</td>
+                            <td>@dependiente.Genero</td>
+                            <td>@dependiente.Telefono</td>
+                            <td>@dependiente.RFC</td>
+
+                            <td>
+                                <a class="btn btn-outline-secondary m-1" href="@Url.Action("Delete", "Dependiente", new {idDependiente = dependiente.IdDependiente})"
+                                   onclick="return confirm('¿Estás seguro de que deseas eliminar este Empleado?')">
+                                    <i class="fa-sharp fa-solid fa-trash fa-lg" style="color: #dc3545;"></i>
+                                </a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger text-center m-3" role="alert">
+            <strong>Este empleado no tiene dependientes!</strong>
+        </div>
+    }
+
+<div class="text-center">
+    <a href="@Url.Action("Form", "Dependiente" , new {numeroEmpleado = Model.Empleado.NumeroEmpleado})" class="btn btn-success text-center">Agregar Dependiente</a>
+
+    <a href="@Url.Action("GetAll", "Dependiente")" class="btn btn-secondary text-center">Regresar</a>
+</div>
+</div>
+
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+@Scripts.Render("~/bundles/jquery")
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript">
+    let table = new DataTable('#dependientesTabla', {
+        reponsive: true,
+        "lengthMenu": [[5, 10, -1], [5, 10, "Todos"]],
+        searching: false,
+        language: {
+            url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json",
+        },
+    });
+
+</script>

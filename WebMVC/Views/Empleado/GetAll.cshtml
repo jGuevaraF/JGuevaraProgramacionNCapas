@@ -1,0 +1,115 @@
+﻿@model ML.Empleado
+
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+@Scripts.Render("~/bundles/jquery")
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+<h2 class="text-center">Empleados</h2>
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+        @using (Html.BeginForm("GetAll", "Empleado", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-inline mx-auto" }))
+        {
+            <div class="text-center">
+                <label>Seleccione una empresa</label>
+                <div class="form-group mr-2 mb-1">
+                    <div class="d-flex justify-content-center m-2">
+                        @Html.DropDownListFor(model => model.Empresa.IdEmpresa, new SelectList(Model.Empresa.Empresas, "IdEmpresa", "Nombre"), "Selecciona una Empresa ", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group mr-2 mb-1">
+                    <label for="ApellidoPaterno">Nombre Empleado</label>
+                    <div class=" d-flex justify-content-center input-group">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @placeholder = "Nombre" })
+                    </div>
+                </div>
+                <div class="form-group mb-2">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i> Buscar</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="table-responsive mb-4">
+    <table class="table table-striped-columns" id="aseguradoraTabla">
+        <thead class="text-center">
+            <tr class="align-middle">
+                <th class="col">Foto Empleado</th>
+                <th class="col">Nombre</th>
+                <th class="col">Apellido Paterno</th>
+                <th class="col">Apellido Materno</th>
+                <th class="col">Correo Electrónico</th>
+                <th class="col">Teléfono Empleado</th>
+                <th class="col">NSS</th>
+                <th class="col">Nombre Empresa</th>
+                <th class="col">Fecha Ingreso</th>
+                <th class="col">Editar</th>
+                <th class="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @foreach (ML.Empleado empleado in Model.Empleados)
+            {
+
+                <tr class="align-middle">
+                    @if (empleado.Foto != null || empleado.Foto == "")
+                    {
+                        <td>
+                            <img id="img" src="data:image/*;base64,@empleado.Foto" width="40" height="40" />
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <img id="img" src="https://png.pngtree.com/png-vector/20220608/ourlarge/pngtree-faceless-user-anonymous-unknown-icon-png-image_4816463.png" width="40" height="40" />
+                        </td>
+                    }
+                    <td>@empleado.Nombre</td>
+                    <td>@empleado.ApellidoPaterno</td>
+                    <td>@empleado.ApellidoMaterno</td>
+                    <td>@empleado.Email</td>
+                    <td>@empleado.Telefono</td>
+                    <td>@empleado.NSS</td>
+                    <td>@empleado.Empresa.Nombre</td>
+                    <td>@empleado.FechaIngreso</td>
+
+                    <td><a class="btn btn-outline-secondary m-1" href="@Url.Action("Form", "Empleado", new {numeroEmpleado = empleado.NumeroEmpleado})"><i class="fa-solid fa-pen-to-square fa-flip-horizontal fa-lg" style="color: #007bff;"></i></a></td>
+
+                    <td>
+                        <a class="btn btn-outline-secondary m-1" href="@Url.Action("Delete", "Empleado", new {numeroEmpleado = empleado.NumeroEmpleado})"
+                           onclick="return confirm('¿Estás seguro de que deseas eliminar este Empleado?')">
+                            <i class="fa-sharp fa-solid fa-trash fa-lg" style="color: #dc3545;"></i>
+                        </a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-center">
+    <a href="@Url.Action("Form", "Empleado")" class="btn btn-success text-center">Agregar Empleado</a>
+</div>
+
+
+<script type="text/javascript">
+    let table = new DataTable('#aseguradoraTabla', {
+        reponsive: true,
+        "lengthMenu": [[3, 5, 10, -1], [3, 5, 10, "Todos"]],
+        searching: false,
+        language: {
+            url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json",
+        },
+    });
+
+</script>

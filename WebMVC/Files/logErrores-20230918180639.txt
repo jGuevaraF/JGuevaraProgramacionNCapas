@@ -1,0 +1,7 @@
+Error al insertar el usuario, con Username user5012. Verificalo.
+Error al insertar el usuario, con Username user5112. Verificalo.
+Error al insertar el usuario, con Username user5212. Verificalo.
+Error al insertar el usuario, con Username user5312. Verificalo.
+Error al insertar el usuario, con Username user5412. Verificalo.
+Error al insertar el usuario, con Username user5512. Verificalo.
+Error al insertar el usuario, con Username user5612. Verificalo.

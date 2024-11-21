@@ -1,0 +1,82 @@
+﻿@model ML.Aseguradora
+
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@* Creamos el formualrio con HTML Helpers de Razor *@
+@Scripts.Render("~/bundles/jquery")
+
+@using (Html.BeginForm("Form", "Aseguradora", FormMethod.Post, new { enctype = "multipart/form-data", @class = "container" }))
+{
+    @Html.HiddenFor(model => model.IdAseguradora);
+    <h2 class="text-center">Registro de Aseguradora</h2>
+
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <div class="mb-3">
+            <label class="d-flex justify-content-center mb-2">
+                <i class="fa-solid fa-circle-user fa-xl" style="color: #000000;"></i> Nombre Aseguradora
+            </label>
+            <div class="d-flex justify-content-center mb-2">
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+            </div>
+
+            <label class="d-flex justify-content-center mb-2">
+                <i class="fas fa-user-tag fa-xl m-1"></i> Id Usuario
+            </label>
+
+            <div class="d-flex justify-content-center mb-2">
+                @*@Html.TextBoxFor(model => model.Rol.idRol, new { @class = "form-control" })*@
+                @Html.DropDownListFor(model => model.Usuario.IdUsuario, new SelectList(Model.Usuario.Usuarios, "IdUsuario", "Nombre"), "Selecciona un Usuario", new { @class = "form-control" })
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-6 text-center">
+            <button type="submit" class="btn btn-success" id="botonGuardar">
+                <span><i class="fa-solid fa-floppy-disk fa-xl" style="color: #000000;" id="iconoGuardar"></i></span>
+                Guardar
+            </button>
+            <a href="@Url.Action("GetAll", "Aseguradora")" class="btn btn-secondary" id="btnRegresar">
+                <span><i class="fa-solid fa-rotate-left fa-xl" style="color: #000000;" id="iconoRegresar"></i></span>
+                Regresar
+            </a>
+        </div>
+    </div>
+
+
+}
+
+<script typeof="text/javascript">
+    $('#botonGuardar').hover(
+        function () {
+            $("#botonGuardar").removeClass('btn-success');
+            $("#botonGuardar").css('background-color', '#11ff06');
+            $('#iconoGuardar').addClass('fa-shake');
+        },
+        function () {
+            $('#iconoGuardar').removeClass('fa-shake');
+            $("#botonGuardar").css('background-color', '');
+            $("#botonGuardar").addClass('btn-success');
+        }
+    );
+
+    $("#btnRegresar").hover(
+        function () {
+            $("#btnRegresar").removeClass('btn-secondary')
+            $("#btnRegresar").addClass('btn-danger')
+            $('#iconoRegresar').addClass('fa-spin fa-spin-reverse')
+        },
+        function () {
+            $("#btnRegresar").removeClass('btn-danger')
+            $("#btnRegresar").addClass('btn-secondary')
+            $('#iconoRegresar').removeClass('fa-spin fa-spin-reverse')
+        }
+    );
+</script>

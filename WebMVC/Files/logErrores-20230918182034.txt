@@ -1,0 +1,7 @@
+***Error al insertar el usuario, con Username user5012.  Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 0.
+***Error al insertar el usuario, con Username user5112.  Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 0.
+***Error al insertar el usuario, con Username user5212.  Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 0.
+***Error al insertar el usuario, con Username user5312.  Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 0.
+***Error al insertar el usuario, con Username user5412.  Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 0.
+***Error al insertar el usuario, con Username user5512.  Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 0.
+***Error al insertar el usuario, con Username user5612.  Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 1, current count = 0.
